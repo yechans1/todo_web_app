@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <!-- .NET 9 사용 (최신 버전) -->
+    <TargetFramework>net9.0</TargetFramework>
+    <!-- Nullable 참조 타입 활성화 (null 안전성 향상) -->
+    <Nullable>enable</Nullable>
+    <!-- 암시적 using문 활성화 (코드 간소화) -->
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Swagger - API 문서 자동 생성 도구 (.NET 9용) -->
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.8.1" />
+    
+    <!-- Entity Framework Core SQLite 공급자 (개발용) -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.0" />
+    
+    <!-- Entity Framework Core SQL Server 공급자 (운영용) -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
+    
+    <!-- EF Core 명령줄 도구 (마이그레이션, 스캐폴딩) -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0" />
+    
+    <!-- EF Core 디자인 타임 서비스 -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0" />
+    
+    <!-- JWT 인증을 위한 패키지 (.NET 9용) -->
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.0" />
+    
+    <!-- JWT 토큰 생성을 위한 패키지 (보안 취약점 해결된 버전) -->
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.1.2" />
+  </ItemGroup>
+
+</Project>
