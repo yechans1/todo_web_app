@@ -54,9 +54,19 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
 builder.Services.Configure<AdminAccount>(builder.Configuration.GetSection("AdminAccount"));
 
-// 데이터베이스 연결 (개발용 SQLite)
-builder.Services.AddDbContext<TodoContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+// 환경별 데이터베이스 연결
+if (builder.Environment.IsDevelopment())
+{
+    // 개발환경: SQLite 사용
+    builder.Services.AddDbContext<TodoContext>(options =>
+        options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+}
+else
+{
+    // 운영환경: SQL Server 사용
+    builder.Services.AddDbContext<TodoContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+}
 
 // JWT 인증 설정
 var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
